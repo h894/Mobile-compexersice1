@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobile_compexersice1">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".Mapselect"></activity>
+        <activity android:name=".MapActivity" />
         <activity android:name=".TimeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -19,7 +23,11 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ReminderReceiver"/>
+        <receiver android:name=".ReminderReceiver" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCIMEDPjK8gPUCd0z16UyHwvoWj1cjcLEI" />
     </application>
 
 </manifest>
