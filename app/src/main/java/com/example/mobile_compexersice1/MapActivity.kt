@@ -140,6 +140,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
+
+
     override fun onMapReady(map: GoogleMap?) {
         gMap = map?:return
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED||
@@ -168,6 +170,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             ActivityCompat.requestPermissions(this, permission.toTypedArray(),123)
         }
 
+
+
         gMap.setOnMapClickListener {location:LatLng->
             with(gMap){
                 clear()
@@ -179,8 +183,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 try{
 
+
                     val addresslist = geocoder.getFromLocation(location.latitude, location.longitude,1)
-                    city = addresslist.get(0).locality
+
+
+                    city = addresslist.get(0).locality.toUpperCase(Locale.getDefault())
                     title = addresslist.get(0).getAddressLine(0)
 
                 }catch(e:Exception){

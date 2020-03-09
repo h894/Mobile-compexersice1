@@ -83,20 +83,24 @@ class MainActivity : AppCompatActivity() {
         val CHANNEL_ID = "REMINDER_CHANNEL_ID"
         var NotificationID=1567
         fun showNotification(context: Context, message:String){
-            var notificationBuilder=NotificationCompat.Builder(context, CHANNEL_ID)
+            val notificationBuilder=NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_alarm_24px)
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(message)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(message))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-            var notificationManager=context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager=context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.Q){
+            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
 
-                val channel=NotificationChannel(CHANNEL_ID,context.getString(R.string.app_name),
+                val channel=NotificationChannel(
+                    CHANNEL_ID,
+                    context.getString(R.string.app_name),
                     NotificationManager.IMPORTANCE_DEFAULT)
-                    .apply { description = context.getString(R.string.app_name) }
+                    .apply {
+                        description = context.getString(R.string.app_name)
+                    }
 
                 notificationManager.createNotificationChannel(channel)
 

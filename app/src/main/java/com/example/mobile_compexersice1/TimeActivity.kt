@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.room.Room
@@ -22,13 +23,32 @@ class TimeActivity : AppCompatActivity() {
 
         time_create.setOnClickListener {
 
-            val calender = GregorianCalendar(
+            /*val calender = GregorianCalendar(
                 Date_picker.year,
                 Date_picker.month,
                 Date_picker.dayOfMonth,
                 Time_picker.currentHour,
                 Time_picker.currentMinute
-            )
+            )*/
+
+            val calender = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                GregorianCalendar(
+                    Date_picker.year,
+                    Date_picker.month,
+                    Date_picker.dayOfMonth,
+                    Time_picker.hour,
+                    Time_picker.minute
+                )
+            } else {
+                GregorianCalendar(
+                    Date_picker.year,
+                    Date_picker.month,
+                    Date_picker.dayOfMonth,
+                    Time_picker.currentHour,
+                    Time_picker.currentMinute
+                )
+            }
+
 
             if((et_message.text.toString() != "") &&
                     (calender.timeInMillis > System.currentTimeMillis())){

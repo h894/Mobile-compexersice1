@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Mobile-compexersice1</string>
+    <string name="search_location">Search .....</string>
+    <string name="reminder_hintText">Reminder text</string>
+    <string name="create_reminder">Create</string>
 </resources>
